@@ -37,7 +37,7 @@ export class GraphPage implements OnInit {
         y = (Math.tan(Math.pow((x+3), 2)))/(Math.pow(Math.abs(x), 1.2) * Math.sin(3*x));
       }
       else 
-      if (x <= this.a) {
+      if (x > this.a) {
         y = (Math.tan(0.1*3.14*x*x)+x)/(Math.pow(Math.cos(2*x+3), 2));
       }
       else{
@@ -46,7 +46,7 @@ export class GraphPage implements OnInit {
       }
       this.xx.push(x.toFixed(1));
       this.yy.push(parseFloat(y.toFixed(1)));
-      let s = "x- " + x.toFixed(1) + " y - " + y.toFixed(1);
+      let s = "x: " + x.toFixed(1) + ", y: " + y.toFixed(1);
       this.data1.push(s);
       x = x + this.h;
     }
