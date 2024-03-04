@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Лабораторна робота №3
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>
+      Виконав студент групи КН-32<br> Боровіков Денис
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color ="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Лабораторні роботи</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text>Читання даних з JSON файлу</ion-text>
+      <br />
+      <!-- <ion-item>
+        <ion-input label="Enter surname" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-label position="floating">Enter surname</ion-label>
+        <ion-input type="text" id="surname" #Inputsur></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="load()">Завантажити</ion-button>
+      <ion-list>
+        <ion-item button *ngFor="let item of data_users; index as i" detail (click)="toggleDetails(i)">
+        <ion-label *ngIf = "!showDetails[i]" text-wrap>
+          <p [ngStyle] ="{color: getColor(item.author.surname, Inputsur.value)}"> <span>Article: </span>{{ item.name }}</p>
+        </ion-label>
+        
+        <ion-text *ngIf="showDetails[i]">
+        <ion-text>
+          <h2 style="color: #3880ff;">Author: </h2>
+          {{item.author.name}} {{item.author.surname}}
+        </ion-text>
+        <ion-text>
+          <h2 style="color: #3880ff;">Publication:</h2>
+          {{item.name_newspaper}}
+          <h4 style="color: #3880ff;">ID publication:</h4>
+          {{item.number_newspaper}}
+          <h4 style="color: #3880ff;">Number of page:</h4>
+          {{item.number_page}}
+        </ion-text>
+
+        </ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      Лабораторна робота №3
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
