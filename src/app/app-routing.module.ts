@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'file',
     loadChildren: () => import('./file/file.module').then( m => m.FilePageModule)
+  },  {
+    path: 'abstract-class',
+    loadChildren: () => import('./abstract-class/abstract-class.module').then( m => m.AbstractClassPageModule)
   }
+
 ];
 @NgModule({
   imports: [
