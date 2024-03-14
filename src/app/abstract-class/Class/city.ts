@@ -3,7 +3,7 @@ import { Settlement } from "./settlement";
 export class City extends Settlement{
     population: number;
     constructor(override type: string, population: number, override area: number){
-        super();
+        super(type, area);
         this.population = population;
     }
 

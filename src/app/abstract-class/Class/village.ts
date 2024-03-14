@@ -4,7 +4,7 @@ export class Village extends Settlement{
     numberOfHouses: number;
     residentsPerHouse: number;
     constructor(override type: string, numberOfHouses: number, residentsPerHouse: number, override area: number){
-        super();
+        super(type, area);
         this.numberOfHouses = numberOfHouses;
         this.residentsPerHouse = residentsPerHouse;
     }
