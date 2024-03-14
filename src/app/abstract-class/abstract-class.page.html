@@ -46,7 +46,13 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-  
+  <ion-card>
+    <ion-card-content>
+      <ion-input type="number" value="5" #Inputn></ion-input>
+      <ion-button (click)="ras(Inputn.value)">Розрахунок</ion-button>
+      <p *ngFor="let set of settlement; let j = index" [ngStyle]="{color:getColor(set.density, min)}">{{set.show()}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 
