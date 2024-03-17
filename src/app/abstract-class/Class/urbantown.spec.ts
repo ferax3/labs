@@ -1,29 +1,29 @@
-import { City } from './city';
+import { UrbanTown } from './urbantown';
 
 //обгортка
-describe('City Testing', () => {
-    let city: City;
+describe('Urbantown Testing', () => {
+    let urbantown: UrbanTown;
     //Перед виконанням усіх тестів створимо екземпляр класу city
     beforeEach(() => {
-        city = new City("City", 100000, 150);
+        urbantown = new UrbanTown("City", 10000, 100);
     });
     //?тестуємо чи створили екземпляр класу
     it('Створення екземпляру класу', () => {
-        expect(city).toBeTruthy();
+        expect(urbantown).toBeTruthy();
     });
     //?створення Міста з від'ємними значеннями
     it("Створення екземпляру класу з від\'ємною площею", ()=> {
-        expect(() => new City('Село', 10000, -50)).toThrow(new Error('area <= 0'));
+        expect(() => new UrbanTown('Село', 10000, -50)).toThrow(new Error('area <= 0'));
     });
     it("Створення екземпляру класу з від\'ємним значенням популяції", ()=> {
-        expect(() => new City('Село', -110000, 50)).toThrow(new Error('population <= 0'));
+        expect(() => new UrbanTown('Село', -11000, 50)).toThrow(new Error('population_urbantown <= 0'));
     });
 
     //?тестуємо метод обрахунку щільності
-    it('Розрахунок щільності міста з популяції людей 10000 та площиною 150км^2', () => {
-        city.Density();
-        let a1 = city.density;
-        let a2 = 100000/150;
+    it('Розрахунок щільності міста з популяції людей 10000 та площиною 100км^2', () => {
+        urbantown.Density();
+        let a1 = urbantown.density;
+        let a2 = 10000/100;
         expect(a1.toFixed(2)).toBe(a2.toFixed(2));
     });
 });

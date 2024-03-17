@@ -1,11 +1,11 @@
 import { Settlement } from "./settlement";
 
-export class City extends Settlement{
+export class UrbanTown extends Settlement{
     population: number;
     constructor(override type: string, population: number, override area: number){
-        if(population <= 0) throw new Error("population <= 0");
         super(type, area);
         this.population = population;
+        if(population <= 0) throw new Error("population_urbantown <= 0");
     }
 
     override Density() {
