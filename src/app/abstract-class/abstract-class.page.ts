@@ -45,11 +45,4 @@ export class AbstractClassPage implements OnInit {
   getColor(el:number, min: number){
     return(Math.abs(el-min)<0.01) ? "green" : "";
   }
-
-
-
-
-  ngOnInit() {
-  }
-
 }
