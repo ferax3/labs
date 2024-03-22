@@ -7,7 +7,7 @@ import { City } from './Class/city';
   templateUrl: './abstract-class.page.html',
   styleUrls: ['./abstract-class.page.scss'],
 })
-export class AbstractClassPage implements OnInit {
+export class AbstractClassPage  {
 
   //поліморфний контейнер
   settlement: Settlement[] = [];
