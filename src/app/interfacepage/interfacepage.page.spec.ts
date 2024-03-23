@@ -5,7 +5,7 @@ describe('InterfacepagePage', () => {
   let component: InterfacepagePage;
   let fixture: ComponentFixture<InterfacepagePage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(InterfacepagePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
