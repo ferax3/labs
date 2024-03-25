@@ -27,9 +27,6 @@ export class Personnel implements SumSalary, MaxExp, IShow{
         return sum;
     }
     max_work_experience(){
-        // if (this.workers.length === 0) {
-        //     return "Немає працівників";
-        // }
         let max_worker = this.workers[0];
         for(let i = 1; i < this.workers.length; i++){
             if(max_worker.work_experience < this.workers[i].work_experience){
