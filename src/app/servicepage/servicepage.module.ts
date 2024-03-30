@@ -4,20 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InterfacepagePageRoutingModule } from './interfacepage-routing.module';
+import { ServicepagePageRoutingModule } from './servicepage-routing.module';
 
-import { InterfacepagePage } from './interfacepage.page';
+import { ServicepagePage } from './servicepage.page';
 import { MyHeaderModule } from '../my-header/my-header.component.module';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InterfacepagePageRoutingModule,
+    ServicepagePageRoutingModule,
     MyHeaderModule
   ],
-  declarations: [InterfacepagePage]
+  declarations: [ServicepagePage]
 })
-export class InterfacepagePageModule {}
+export class ServicepagePageModule {}
