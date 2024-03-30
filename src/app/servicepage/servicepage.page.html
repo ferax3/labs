@@ -27,6 +27,7 @@
                 <h1>Результати розрахунку</h1>
             </ion-card-title>
             <ion-card-content>
+                <canvas #lineCanvas></canvas>
                 <ion-list>
                     <ion-item *ngFor="let item of xyInput | keyvalue">
                         <ion-label>
