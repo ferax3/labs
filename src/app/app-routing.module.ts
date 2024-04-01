@@ -24,6 +24,10 @@ const routes: Routes = [
   {
     path: 'servicepage',
     loadChildren: () => import('./servicepage/servicepage.module').then( m => m.ServicepagePageModule)
+  },
+  {
+    path: 'blank',
+    loadChildren: () => import('./blank/blank.module').then( m => m.BlankPageModule)
   }
 
 ];
