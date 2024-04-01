@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Department } from './Class/department';
+import { IsEqualCountsService } from '../blank/service/is-equal-counts.service';
+import { AlertController } from '@ionic/angular';
+import { countValidator } from '../blank/service/countValidator';
 
 @Component({
   selector: 'app-myform',
@@ -12,15 +15,12 @@ export class MyformComponent  implements OnInit {
   department!: Department;
   //Патерн для перевірки введення адреси
   fullnamePattern = "^[А-ЯҐІЇЄа-яґіїєa-zA-Z']{2,} [А-ЯҐІЇЄа-яґіїєa-zA-Z']{2,} [А-ЯҐІЇЄа-яґіїєa-zA-Z']{2,}$";
-  // addressPattern = "^(?=.*[а-яА-ЯіІїЇєЄёa-zA-Z0-9])(?=.*[^\s])(?=.*[0-9]).{3,}$";
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private alertController: AlertController) {
     this.departmentForm = this.fb.group({
       departmentName: ['', [Validators.required]],
       departmentHead: ['', Validators.pattern(this.fullnamePattern)],
-      departmentCount: [''],
+      departmentCount: ['', [countValidator()]],
       departmentAddress: [''],
-
-      // departmentAddress: ['', Validators.pattern(this.addressPattern)],
       professors: new FormArray([new FormControl()]),
     });
    }
@@ -38,8 +38,40 @@ export class MyformComponent  implements OnInit {
     return (this.departmentForm.get('professors') as FormArray).controls;
    }
    onSubmit(){
-    console.log("Submit");
+    let name = this.departmentForm.value.departmentName;
+    let head = this.departmentForm.value.departnentHead;
+    let address = this.departmentForm.value.departmentAddress;
+    let professors = this.departmentForm.value.professors;
+
+    let count1 = this.departmentForm.value.departmentCount;
+    let professorsControl = this.departmentForm.get('professors');
+    
+    if(professorsControl !== null && count1 !== null) { // перевірка на null
+      let count2 = professorsControl.value.length;
+      let valid = new IsEqualCountsService();
+      if (valid.validate_is_equal_counts(count1, count2)){
+        this.department = new Department(name, head, count1, address, professors);
+        console.log("Submit");
+        console.log(this.department);
+
+      }
+      else
+        this.presentAlert("К-сть викладачів не співпадає з к-стю викладачами в списку.. \nВиправте це 😊");
+    } else {
+      // Обробка ситуації, коли контроль викладачів має значення null
+      this.presentAlert("Error: Professors form control is null");
+    }
    }
   ngOnInit() {}
+
+  async presentAlert(message1: string){
+    const alert = await this.alertController.create({
+      header: 'Помилка',
+      subHeader: '',
+      message: message1,
+      buttons: ["OK"],
+    });
+    await alert.present();
+  }
 
 }
