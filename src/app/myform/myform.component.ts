@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Department } from './Class/department';
 import { IsEqualCountsService } from '../blank/service/is-equal-counts.service';
@@ -13,6 +13,10 @@ import { countValidator } from '../blank/service/countValidator';
 export class MyformComponent  implements OnInit {
   departmentForm!: FormGroup;
   department!: Department;
+
+//? інша лаб
+  //Батьківський компонент слухає цю подію та отримує дані
+  @Output()departmentAdd: EventEmitter<Department> = new EventEmitter<Department>();
   //Патерн для перевірки введення адреси
   fullnamePattern = "^[А-ЯҐІЇЄа-яґіїєa-zA-Z']{2,} [А-ЯҐІЇЄа-яґіїєa-zA-Z']{2,} [А-ЯҐІЇЄа-яґіїєa-zA-Z']{2,}$";
   constructor(private fb: FormBuilder, private alertController: AlertController) {
@@ -39,7 +43,7 @@ export class MyformComponent  implements OnInit {
    }
    onSubmit(){
     let name = this.departmentForm.value.departmentName;
-    let head = this.departmentForm.value.departnentHead;
+    let head = this.departmentForm.value.departmentHead;
     let address = this.departmentForm.value.departmentAddress;
     let professors = this.departmentForm.value.professors;
 
@@ -53,7 +57,7 @@ export class MyformComponent  implements OnInit {
         this.department = new Department(name, head, count1, address, professors);
         console.log("Submit");
         console.log(this.department);
-
+        this.departmentAdd.emit(this.department);
       }
       else
         this.presentAlert("К-сть викладачів не співпадає з к-стю викладачами в списку.. \nВиправте це 😊");

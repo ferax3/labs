@@ -9,6 +9,8 @@ import { BlankPageRoutingModule } from './blank-routing.module';
 import { BlankPage } from './blank.page';
 import { MyHeaderModule } from '../my-header/my-header.component.module';
 import { MyformComponent } from '../myform/myform.component';
+import { ViewformComponent } from '../viewform/viewform.component';
+import { UpdateformComponent } from '../updateform/updateform.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,6 @@ import { MyformComponent } from '../myform/myform.component';
     MyHeaderModule,
     ReactiveFormsModule
   ],
-  declarations: [BlankPage, MyformComponent]
+  declarations: [BlankPage, MyformComponent, ViewformComponent, UpdateformComponent]
 })
 export class BlankPageModule {}

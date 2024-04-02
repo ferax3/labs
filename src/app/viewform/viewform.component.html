@@ -1,0 +1,17 @@
+<app-myform (departmentAdd)="addProfessor($event)"></app-myform>
+<ion-card *ngFor="let department of departments; let i=index">
+    <ion-card-header>
+        <ion-card-title>{{department.name}}</ion-card-title>
+        <ion-card-subtitle>Адреса: {{department.address}}</ion-card-subtitle>
+        <p>Завідувач: {{department.head}}</p>
+    </ion-card-header>
+    <ion-card-content>
+        <p>Кількість викладачів: {{department.count}}</p>
+        <h3>Викладачі</h3>
+        <ion-item *ngFor="let professor of department.professors">
+            {{professor}}
+        </ion-item>
+    </ion-card-content>
+    <ion-button (click)="update()">Редагувати</ion-button>
+    <app-updateform [department]="department" [show]="show_update" *ngIf="show_update" (showChange)="showUp($event)" (departmentChange)="update_save($event, i)"></app-updateform>
+</ion-card>
