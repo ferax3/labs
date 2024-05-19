@@ -32,7 +32,7 @@
           <ion-item *ngFor="let professor of getControls(); let i = index">
             <ion-input type="text" formControlName={{i}} placeholder="ПІБ викладача"></ion-input>
             <ion-button color="tertiary" (click)="deleteProfessor(i)">
-              <ion-icon slot="start" name="trash">Видалити</ion-icon>
+              <ion-icon slot="start" name="trash"></ion-icon>Видалити
             </ion-button>
           </ion-item>
         </ion-card-content>
