@@ -1,0 +1,38 @@
+<app-my-header name = "Лабораторна робота №10"></app-my-header>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <h1>Завдання</h1>
+      <p>3. Довідник країн та список міст у цих країнах</p>
+    </ion-card-header>
+  </ion-card>
+  <ion-item>
+    <ion-button (click) = "nextCountry()">Наступна країна</ion-button>
+    <ion-label>Поточна країна: </ion-label>
+    <ion-label>{{cnt.name}}</ion-label>
+  </ion-item>
+  <ion-item *ngFor="let city of cityList.searchCityResult; let j = index">{{city}}</ion-item>
+  <ion-item>
+    <ion-label position="stacked">Введіть нову країну</ion-label>
+    <ion-input #InputCoutry></ion-input>
+    <ion-button (click)="addCountry(InputCoutry.value)">Додати країну</ion-button>
+  </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Додати місто</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label position="stacked">Введіть назву</ion-label>
+      <ion-input #InputName></ion-input>
+      <ion-label position="stacked">Введіть кількість населення</ion-label>
+      <ion-input #InputCount type="number"></ion-input>
+      <ion-label position="stacked">Введіть кількість поділу міста</ion-label>
+      <ion-input #InputDevision type="number"></ion-input>
+      <ion-label position="stacked">Введіть площу міста</ion-label>
+      <ion-input #InputSq type="number"></ion-input>
+      <ion-label position="stacked">Введіть телефонний код</ion-label>
+      <ion-input #InputTel type="number"></ion-input>
+      <ion-button (click)="addCity(InputName.value, InputCount.value, InputDevision.value, InputSq.value, InputTel.value)">Додати місто</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
