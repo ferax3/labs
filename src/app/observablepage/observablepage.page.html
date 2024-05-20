@@ -1,4 +1,4 @@
-<app-my-header name = "Лабораторна робота №10"></app-my-header>
+<app-my-header name = "Лабораторна робота №10-11"></app-my-header>
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
@@ -11,7 +11,13 @@
     <ion-label>Поточна країна: </ion-label>
     <ion-label>{{cnt.name}}</ion-label>
   </ion-item>
-  <ion-item *ngFor="let city of cityList.searchCityResult; let j = index">{{city}}</ion-item>
+  <ion-card *ngFor="let city of cityList.searchCity; let j = index">
+    <ion-item>Місто - {{city.name}}</ion-item>
+    <ion-item>Населення - {{city.count}}</ion-item>
+    <ion-item>Площа - {{city.sq}}</ion-item>
+    <ion-item>Поділ міста - {{city.devision}}</ion-item>
+    <ion-item>Телофонний код - {{city.tel}}</ion-item>
+  </ion-card>
   <ion-item>
     <ion-label position="stacked">Введіть нову країну</ion-label>
     <ion-input #InputCoutry></ion-input>

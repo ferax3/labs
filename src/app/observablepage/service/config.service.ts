@@ -15,5 +15,4 @@ export class ConfigService {
   }
   constructor() { }
 }
-var countryList=new CountryList();
-const DEFAULT_CNT=countryList.cnt.get(0);
+const DEFAULT_CNT={ "id": 1, "name": "Україна"};
